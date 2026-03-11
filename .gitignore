@@ -1,0 +1,10 @@
+.stfolder
+storage/emulated/0
+.DS_Store
+
+# Obsidian
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/sync.json
+.trash/
