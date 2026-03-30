@@ -150,9 +150,9 @@ start_date: 2026-02-10
 ---
 
 ## 🟢 PHASE 13: Queue (FIFO Thinking)
-- [ ] Queue operations
-- [ ] Circular queue idea
-- [ ] BFS intuition preview
+- [x] Queue operations
+- [x] Circular queue idea
+- [x] BFS intuition preview
 - [ ] Queue vs stack comparison
 
 ---
