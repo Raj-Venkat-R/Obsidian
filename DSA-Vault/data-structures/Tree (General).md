@@ -681,14 +681,14 @@ public class TreeNode {
     TreeNode left;
     TreeNode right;
 
-    Tree(int val){
+    TreeNode(int val){
         this.val = val;
     }
 
     public static void main(String[] args) {
-        Tree root = new Tree(5);
-        Tree node1 = new Tree(4);
-        Tree node2 = new Tree(6);
+        TreeNode root = new TreeNode(5);
+        TreeNode node1 = new TreeNode(4);
+        TreeNode node2 = new TreeNode(6);
         root.left = node1;
         root.right = node2;
     }
