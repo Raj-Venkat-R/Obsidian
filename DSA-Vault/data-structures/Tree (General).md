@@ -378,20 +378,323 @@ A tree is usually the right choice when the problem involves:
 
 ## 6. When NOT to Use
 
-*(What makes another structure better here?)*
+A tree is not always the best choice. Consider other data structures when the problem does not involve hierarchical relationships or when a simpler structure provides better performance.
+
+### Do NOT use a tree when:
+
+- Data is sequential and accessed by index.
+  - Use an **Array** instead.
+
+- Frequent random access is required.
+  - Arrays provide **O(1)** indexing, whereas trees require traversal.
+
+- Only linear traversal is needed.
+  - Use a **Linked List**.
+
+- The problem requires only LIFO operations.
+  - Use a **Stack**.
+
+- The problem requires only FIFO operations.
+  - Use a **Queue**.
+
+- Data is frequently searched using exact keys.
+  - Use a **HashMap** or **HashSet**, which provide average **O(1)** lookup.
+
+- Data has no hierarchical relationship.
+  - A tree adds unnecessary complexity.
+
+- Memory usage is a major concern.
+  - Every tree node stores additional references (child pointers), increasing memory overhead.
+
+- The tree is likely to become highly skewed.
+  - Operations may degrade to **O(n)**.
+  - Consider balanced trees such as **AVL Tree** or **Red-Black Tree** instead.
+
+---
+
+### Better Alternatives
+
+| Requirement | Better Data Structure |
+|-------------|----------------------|
+| Fast random access | Array |
+| Sequential processing | Linked List |
+| LIFO operations | Stack |
+| FIFO operations | Queue |
+| Fast key lookup | HashMap / HashSet |
+| Ordered collection with indexing | ArrayList |
+| Priority-based processing | Heap (Priority Queue) |
+
+---
+
+### Key Takeaways
+
+- Do not use a tree if there is **no hierarchical relationship**.
+- Arrays are better for **index-based access**.
+- HashMaps are better for **fast key-value lookups**.
+- Trees are powerful, but they introduce additional memory usage and implementation complexity.
+- Choose a tree only when its hierarchical structure or traversal capabilities provide a clear advantage.
 
 ---
 
 ## 7. Types / Variants
 
-*(Subtypes, special cases, related variants)*
+Trees are classified based on their structure, balancing technique, or purpose.
+
+---
+
+### 1. General Tree
+
+A tree where a node can have **any number of children**.
+
+Example:
+
+```text
+        A
+      / | \
+     B  C  D
+       / \
+      E   F
+```
+
+Use Cases:
+- File systems
+- Organization charts
+- XML/HTML DOM
+
+---
+
+### 2. Binary Tree
+
+A tree where every node has **at most two children**.
+
+Children are called:
+- Left Child
+- Right Child
+
+Example:
+
+```text
+        1
+       / \
+      2   3
+     /
+    4
+```
+
+This is the foundation for many advanced tree structures.
+
+---
+
+### 3. Binary Search Tree (BST)
+
+A special type of Binary Tree where:
+
+- Left subtree contains smaller values
+- Right subtree contains larger values
+
+Example:
+
+```text
+        8
+       / \
+      4   12
+     / \   \
+    2   6   15
+```
+
+Provides efficient searching when balanced.
+
+---
+
+### 4. Balanced Binary Tree
+
+A Binary Tree where the height difference between left and right subtrees remains small.
+
+Examples:
+- AVL Tree
+- Red-Black Tree
+
+Purpose:
+- Prevents the tree from becoming skewed.
+- Keeps operations close to **O(log n)**.
+
+---
+
+### 5. AVL Tree
+
+A self-balancing Binary Search Tree.
+
+Property:
+
+```
+|Height(Left) - Height(Right)| ≤ 1
+```
+
+Whenever the tree becomes unbalanced, rotations are performed.
+
+---
+
+### 6. Red-Black Tree
+
+A self-balancing Binary Search Tree that uses node colors (Red and Black) to maintain balance.
+
+Used in:
+- Java TreeMap
+- Java TreeSet
+
+---
+
+### 7. Heap
+
+A complete Binary Tree used for priority-based processing.
+
+Types:
+
+- Min Heap
+- Max Heap
+
+Applications:
+- Priority Queue
+- Heap Sort
+- Scheduling
+
+---
+
+### 8. Trie (Prefix Tree)
+
+Stores strings character by character.
+
+Applications:
+- Auto-complete
+- Spell checker
+- Dictionary search
+- Prefix matching
+
+---
+
+### 9. Segment Tree
+
+A Binary Tree used for efficient range queries.
+
+Applications:
+- Range Sum
+- Range Minimum
+- Range Maximum
+
+Supports updates efficiently.
+
+---
+
+### 10. Fenwick Tree (Binary Indexed Tree)
+
+A space-efficient alternative to Segment Tree.
+
+Applications:
+- Prefix Sum
+- Range Sum Queries
+- Frequency Counting
+
+---
+
+### 11. B-Tree
+
+A multi-way search tree designed for storage systems.
+
+Applications:
+- Databases
+- File Systems
+
+Allows multiple keys per node.
+
+---
+
+### 12. B+ Tree
+
+An extension of B-Tree.
+
+Applications:
+- Database indexing
+- File systems
+
+Leaf nodes are linked together for faster range queries.
+
+---
+
+### 13. N-ary Tree
+
+A tree where each node can have at most **N children**.
+
+Example (3-ary Tree):
+
+```text
+         A
+      /  |  \
+     B   C   D
+```
+
+General Tree is a special case of an N-ary Tree.
+
+---
+
+## Summary
+
+| Tree Type | Maximum Children | Main Purpose |
+|-----------|------------------|--------------|
+| General Tree | Unlimited | Hierarchical data |
+| Binary Tree | 2 | Foundation for tree algorithms |
+| Binary Search Tree | 2 | Efficient searching |
+| AVL Tree | 2 | Self-balancing BST |
+| Red-Black Tree | 2 | Self-balancing BST |
+| Heap | 2 | Priority processing |
+| Trie | Variable | String and prefix searching |
+| Segment Tree | 2 | Range queries |
+| Fenwick Tree | 2 | Prefix and range sums |
+| B-Tree | Multiple | Database indexing |
+| B+ Tree | Multiple | Efficient database storage |
+| N-ary Tree | N | General hierarchical structures |
+
+---
+
+### Learning Order
+
+Study these trees in the following order:
+
+1. General Tree
+2. Binary Tree
+3. Binary Search Tree (BST)
+4. Heap
+5. AVL Tree
+6. Red-Black Tree
+7. Trie
+8. Segment Tree
+9. Fenwick Tree
+10. B-Tree
+11. B+ Tree
 
 ---
 
 ## 8. Java Implementation
 
 ```java
-// Fill when studying
+public class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    Tree(int val){
+        this.val = val;
+    }
+
+    public static void main(String[] args) {
+        Tree root = new Tree(5);
+        Tree node1 = new Tree(4);
+        Tree node2 = new Tree(6);
+        root.left = node1;
+        root.right = node2;
+    }
+}
+
+
 ```
 
 ---
